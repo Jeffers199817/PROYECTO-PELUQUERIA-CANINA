@@ -4,6 +4,8 @@
 
 package com.mycompany.peluqueriacanina;
 
+import com.mycompany.peluqueriacanina.igu.Principal;
+
 /**
  *
  * @author JEFFERSON ALQUINGA
@@ -11,6 +13,9 @@ package com.mycompany.peluqueriacanina;
 public class PeluqueriaCanina {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        Principal princ = new Principal();
+        princ.setVisible(true);
+        princ.setLocationRelativeTo(null);
+        
     }
 }

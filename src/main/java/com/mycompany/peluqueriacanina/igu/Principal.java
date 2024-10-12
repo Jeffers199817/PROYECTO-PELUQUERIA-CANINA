@@ -116,6 +116,11 @@ public class Principal extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        CargaDatos pantalla = new CargaDatos();
+        pantalla.setVisible(true);// permite inicialirzar el progrma 
+        pantalla.setLocationRelativeTo(null);// esta función permite manterne la pantalla en el centro 
+        
+        
     }//GEN-LAST:event_jButton3ActionPerformed
 
 
