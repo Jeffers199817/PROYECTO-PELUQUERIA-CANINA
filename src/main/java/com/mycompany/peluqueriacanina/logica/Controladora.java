@@ -5,6 +5,7 @@
 package com.mycompany.peluqueriacanina.logica;
 
 import com.mycompany.peluqueriacanina.persistencia.ControladoraPersistencia;
+import java.util.List;
 
 /**
  *
@@ -33,6 +34,10 @@ public class Controladora {
         
         controladoraPersis.guardar(duenio,masco);
         
+    }
+
+    public List<Mascota> traerMascotas() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
   
  
