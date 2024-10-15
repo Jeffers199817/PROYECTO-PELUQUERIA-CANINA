@@ -9,7 +9,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class VerDatos extends javax.swing.JFrame {
     
-    Controladora control;
+    Controladora control= null;
 
     public VerDatos() {
         control = new Controladora();
@@ -25,7 +25,7 @@ public class VerDatos extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaMascotas = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         btnEliminar = new javax.swing.JButton();
         btnEditar = new javax.swing.JButton();
@@ -42,7 +42,7 @@ public class VerDatos extends javax.swing.JFrame {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaMascotas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {},
@@ -53,7 +53,12 @@ public class VerDatos extends javax.swing.JFrame {
 
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        tablaMascotas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaMascotasMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tablaMascotas);
 
         jLabel2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel2.setText("Datos de mascotas: ");
@@ -148,6 +153,11 @@ public class VerDatos extends javax.swing.JFrame {
         cargarTabla();
     }//GEN-LAST:event_formWindowOpened
 
+    private void tablaMascotasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaMascotasMouseClicked
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tablaMascotasMouseClicked
+
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -158,7 +168,7 @@ public class VerDatos extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tablaMascotas;
     // End of variables declaration//GEN-END:variables
 
     private void cargarTabla() {
@@ -167,6 +177,7 @@ public class VerDatos extends javax.swing.JFrame {
         
         DefaultTableModel tabla = new  DefaultTableModel(){
             
+            @Override
             public boolean isCellEditable(int row, int column){
                 return false;
             }
@@ -175,6 +186,7 @@ public class VerDatos extends javax.swing.JFrame {
         //Establecemos los nombre de las columnas 
         String titulos[] ={"Num","Nombre","Color", "Raza","Alergico","At.Esp","Dueño","Celular Dueño"};  
         tabla.setColumnIdentifiers(titulos);
+       
        //Carga de los datos desde la base de datos 
        List<Mascota> listaMascotas =  control.traerMascotas();
        //Recorre la lista y mostrar cad  uno de los elementos en la tabla 
@@ -184,10 +196,12 @@ public class VerDatos extends javax.swing.JFrame {
                Object[] objeto={masco.getNum_cliente(), masco.getNombre(),
                    masco.getColor(), masco.getRaza(), masco.getAlergico(), masco.getAtencion_especial(),
                    masco.getUnDuenio().getNombre(), masco.getUnDuenio().getCelDuenio()};
+               System.out.println("ESTO ES :" + masco +"y : " + masco.getNombre()+  " dueño: " + masco.getUnDuenio().getNombre());
+               
                
                tabla.addRow(objeto);
            }
-           
+           tablaMascotas.setModel(tabla);
        }
        
     }
