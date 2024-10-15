@@ -73,6 +73,11 @@ public class VerDatos extends javax.swing.JFrame {
         });
 
         btnEditar.setIcon(new javax.swing.ImageIcon("C:\\Users\\JEFFERSON ALQUINGA\\Documents\\NetBeansProjects\\PeluqueriaCanina\\img\\pngwing.com editar.png")); // NOI18N
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -179,6 +184,33 @@ public class VerDatos extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tablaMascotasMouseClicked
 
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+
+   if(tablaMascotas.getRowCount()>0){
+            
+            if(tablaMascotas.getSelectedRow()!=-1){
+                
+                int num_cliente = Integer.parseInt(String.valueOf(tablaMascotas.getValueAt(tablaMascotas.getSelectedRow(),0)));
+                
+                ModificarDatos modificarD = new ModificarDatos(num_cliente);
+                
+                modificarD.setVisible(true);
+                modificarD.setLocationRelativeTo(null);
+                this.dispose();
+                        
+            }else{
+                ventanaAlerta("Selecciona un cliente para editar", "info","Seleccionar cliente");
+            }
+            
+        }else{  
+            ventanaAlerta("Tabla vacia, no existen registros para editar","error", "Tabla vacia");
+        }
+
+
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEditarActionPerformed
+
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -192,7 +224,7 @@ public class VerDatos extends javax.swing.JFrame {
     private javax.swing.JTable tablaMascotas;
     // End of variables declaration//GEN-END:variables
 
-    private void cargarTabla() {
+    public void cargarTabla() {
         
         //Definir el modelo que queremos que tenga la tabla
         

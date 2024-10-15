@@ -38,6 +38,30 @@ public class ControladoraPersistencia {
         mascoJpa.destroy(num_cliente);
         duenioJpa.destroy(num_cliente);
     }
+
+
+    public Mascota traerMascota(int num_cliente) {
+       
+       return mascoJpa.findMascota(num_cliente);
+         
+    }
+
+    public void modificarMascota(Mascota masco) {
+        mascoJpa.edit(masco);
+    }
+
+    public Duenio traerDuenio(int idDuenio) {
+
+        
+        return duenioJpa.findDuenio(idDuenio);
+
+    }
+
+    public void modificarDuenio(Duenio duenio) {
+        
+        duenioJpa.edit(duenio);
+        
+    }
     
     
     
