@@ -44,6 +44,11 @@ public class Controladora {
         
         
     }
+
+    public void eliminarMascota(int num_cliente) {
+        
+        controladoraPersis.eliminarMascota(num_cliente);
+    }
   
  
   

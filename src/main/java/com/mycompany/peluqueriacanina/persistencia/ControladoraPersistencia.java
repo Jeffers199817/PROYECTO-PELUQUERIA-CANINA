@@ -32,6 +32,12 @@ public class ControladoraPersistencia {
         return listaMascota;
        
     }
+
+    public void eliminarMascota(int num_cliente) {
+       
+        mascoJpa.destroy(num_cliente);
+        duenioJpa.destroy(num_cliente);
+    }
     
     
     

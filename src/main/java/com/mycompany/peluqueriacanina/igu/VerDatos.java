@@ -4,6 +4,8 @@ package com.mycompany.peluqueriacanina.igu;
 import com.mycompany.peluqueriacanina.logica.Controladora;
 import com.mycompany.peluqueriacanina.logica.Mascota;
 import java.util.List;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -145,7 +147,26 @@ public class VerDatos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        // TODO add your handling code here:
+
+        if(tablaMascotas.getRowCount()>0){
+            
+            if(tablaMascotas.getSelectedRow()!=-1){
+                
+                int num_cliente = Integer.parseInt(String.valueOf(tablaMascotas.getValueAt(tablaMascotas.getSelectedRow(),0)));
+                control.eliminarMascota(num_cliente);
+                
+                ventanaAlerta("Eliminado correctamente","info", "Eliminado exitoso");
+                        
+            }else{
+                ventanaAlerta("Selecciona un cliente para eliminar", "info","Seleccionar cliente");
+            }
+            
+        }else{  
+            ventanaAlerta("Tabla vacia, no existen registros para eliminar","error", "Tabla vacia");
+        }
+
+
+                // TODO add your handling code here:
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -204,5 +225,23 @@ public class VerDatos extends javax.swing.JFrame {
            tablaMascotas.setModel(tabla);
        }
        
+    }
+    
+    public void ventanaAlerta(String accion, String tipo, String alerta){
+        
+        JOptionPane optionPane = new JOptionPane(accion);
+        
+        if(tipo.equals("info")){
+            optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
+        }
+        if(tipo.equals("error")){ 
+            optionPane.setMessageType(JOptionPane.ERROR_MESSAGE);
+        }
+        
+        JDialog dialog = optionPane.createDialog(alerta);
+        dialog.setAlwaysOnTop(true);
+        dialog.setVisible(true);
+        cargarTabla();
+        
     }
 }
