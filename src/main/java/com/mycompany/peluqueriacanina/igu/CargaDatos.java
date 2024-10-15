@@ -1,6 +1,10 @@
 
 package com.mycompany.peluqueriacanina.igu;
 
+import com.mycompany.peluqueriacanina.logica.Controladora;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
+
 
 public class CargaDatos extends javax.swing.JFrame {
 
@@ -250,6 +254,28 @@ public class CargaDatos extends javax.swing.JFrame {
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
+        
+        String nombreMascota = txtNombre.getText();
+        String raza= txtRaza.getText();
+        String color = txtColor.getText();
+        String observaciones = txtObservaciones.getText();
+        String nombreDuenio = txtNombreDuenio.getText();
+        String celDuenio = txtCelDuenio.getText();
+        
+        String alergico = (String) cmbAlergico.getSelectedItem();
+        String ateEsp = (String) cmbAtEsp.getSelectedItem();
+        Controladora control = new Controladora();//LLLmar a la controladora
+        
+        control.guardar(nombreMascota, raza, color, observaciones, nombreDuenio,celDuenio, alergico,ateEsp);
+        
+        JOptionPane optionPane = new JOptionPane("Se guardó Correctamente");
+        optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
+        JDialog dialog = optionPane.createDialog("Guardado Exitoso");
+        dialog.setAlwaysOnTop(true);
+        dialog.setVisible(true);
+        
+        
+        
     }//GEN-LAST:event_btnGuardarActionPerformed
 
 

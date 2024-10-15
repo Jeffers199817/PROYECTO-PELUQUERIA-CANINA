@@ -17,5 +17,7 @@ public class PeluqueriaCanina {
         princ.setVisible(true);
         princ.setLocationRelativeTo(null);
         
+     
+        
     }
 }

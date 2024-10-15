@@ -4,10 +4,39 @@
  */
 package com.mycompany.peluqueriacanina.logica;
 
+import com.mycompany.peluqueriacanina.persistencia.ControladoraPersistencia;
+
 /**
  *
  * @author JEFFERSON ALQUINGA
  */
 public class Controladora {
+
+  ControladoraPersistencia controladoraPersis = new ControladoraPersistencia();
+
+    public void guardar(String nombreMascota, String raza, String color, String observaciones, String nombreDuenio, String celDuenio, String alergico, String ateEsp) {
+      
+        Duenio duenio = new Duenio();
+        
+        duenio.setNombre(nombreDuenio);
+        duenio.setCelDuenio(celDuenio);
+        
+        
+        Mascota masco = new Mascota();
+        masco.setNombre(nombreMascota);
+        masco.setRaza(raza);
+        masco.setColor(color);
+        masco.setObservaicones(observaciones);
+        masco.setAlergico(alergico);
+        masco.setAtencion_especial(ateEsp);
+        masco.setUnDuenio(duenio);
+        
+        controladoraPersis.guardar(duenio,masco);
+        
+    }
+  
+ 
+  
+    
     
 }
